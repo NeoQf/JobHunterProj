@@ -68,7 +68,7 @@
 # 4 SpringMVC
 ## 4.1 问题
 1. spring的IOC如何与SpringMVC衔接起来？（如上图2的工作流程）<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;-- 而由于SpringMVC是处理view（视图）的问题，所以，实际上就是要问如何将数据显示到浏览器页面上？亦即，service如何被controller调用的问题。
+&nbsp;&nbsp;&nbsp;&nbsp;-- 而由于SpringMVC是处理view（视图）的问题，并且controller又是最终被浏览器调用并显示；所以，实际上就是要问如何将数据显示到浏览器页面上？亦即，service如何被controller调用的问题。
 2. service是如何被controller调用的？-- 在UserController.java中：
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;1）@Controller -- Bean管理创建当前类（在UserController）的对象
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;2）@RequestMapping(path = "/user") -- 当前类的浏览器url路径
