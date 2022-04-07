@@ -3,6 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/JobHunterProj.iml" filepath="$PROJECT_DIR$/JobHunterProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Newcoder_Seckill/Newcoder_Seckill.iml" filepath="$PROJECT_DIR$/Newcoder_Seckill/Newcoder_Seckill.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Newcoder_Seckill/Notion_examples/Notion_examples.iml" filepath="$PROJECT_DIR$/Newcoder_Seckill/Notion_examples/Notion_examples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Newcoder_Seckill/Notion_examples/example02/example02.iml" filepath="$PROJECT_DIR$/Newcoder_Seckill/Notion_examples/example02/example02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Newcoder_Seckill/seckillProj/seckillProj.iml" filepath="$PROJECT_DIR$/Newcoder_Seckill/seckillProj/seckillProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Newcoder_Seckill/seckillProj/seckillV1/seckillV1.iml" filepath="$PROJECT_DIR$/Newcoder_Seckill/seckillProj/seckillV1/seckillV1.iml" />
     </modules>
   </component>
 </project>
