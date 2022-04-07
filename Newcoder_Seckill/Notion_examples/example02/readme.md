@@ -107,3 +107,5 @@
    }
    ```
 ## 4.2 总结
+1. IOC解决的是bean之间的依赖关系；
+2. SpringMVC解决的是controller调用service，并将结果显示在页面上的问题。
