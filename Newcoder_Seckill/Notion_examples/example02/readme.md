@@ -16,7 +16,7 @@
 
 ## 3.2 IOC管理哪些Bean
 问题：为什么entity下的User类就不使用IOC（@Repository等Bean的注解）进行Bean的管理？
-1. IOC一般用于管理`**可复用的、不变的**`类；不可复用的、易变的类不适用IOC进行管理。<br/>
+1. IOC一般用于管理**可复用的、不变的**类；不可复用的、易变的类不适用IOC进行管理。<br/>
    如dao和service，它们都是单例的，只需要实例化一次即可反复使用，因为那些类中没有数据，没有直接的成员变量，只是一个逻辑，这种逻辑是可以复用的，像这种可以复用的、一般可以单例的，我们都可以使用IOC进行管理。
    package com.nowcoder.example.dao.impl;<br/>
    如，UserDaoJdbcImpl.java：
