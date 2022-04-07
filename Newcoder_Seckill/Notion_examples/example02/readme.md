@@ -7,7 +7,7 @@
 ## 2.1 构建项目
 
 
-# 3 spring
+# 3 Spring
 ## 3.1 IOC实现可插拔（对spring的理解）
 1. 例如：接口UserDao；
 2. 其实现类UserDaoHibernateImpl与UserDaoJdbcImpl；
@@ -59,5 +59,51 @@
     ```
 ## 3.3 哪些层有接口
 1. controller没有接口，service和dao有接口；
-2. 原因：controller是由浏览器页面去调用的，若是要换一个controller类的话，那就重写一个controller类即可；
+2. 原因：controller是由浏览器页面去调用的，若是要换一个controller类的话，那就重写一个controller类即可；<br/>
 而dao、service要换的话，只需要重写接口的实现类（不使用浏览器页面进行调用）即可。
+
+## 3.4 总结
+&nbsp;&nbsp;&nbsp;&nbsp;IOC解决的是Bean的管理和bean之间的依赖的问题。
+
+# 4 SpringMVC
+## 4.1 问题
+1. spring的IOC如何与SpringMVC衔接起来？（如上图2的工作流程）<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;-- 而由于SpringMVC是处理view（视图）的问题，所以，实际上就是要问如何将数据显示到浏览器页面上？亦即，service如何被controller调用的问题。
+2. service是如何被controller调用的？-- 在UserController.java中：
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;1）@Controller -- Bean管理创建当前类（在UserController）的对象
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;2）@RequestMapping(path = "/user") -- 当前类的浏览器url路径
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;3）@Autowired -- 导入service，虽然是放在UserService上面，但是是导入其实现类的对象。（Bean管理创建UserService实现类的对象
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;4）@RequestMapping(path = "/detail/{id}", method = RequestMethod.GET) -- 当前方法的浏览器url路径，{id}表示是一个参数
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;5）@ResponseBody -- 表示结果在浏览器中以json格式显示
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;6）@PathVariable("id") -- 使用在方法的参数前，表示获取前面{id}实际填入浏览器中的值
+3. 代码<br/>
+   ```java
+   package com.nowcoder.example.controller;
+   
+   import com.nowcoder.example.entity.User;
+   import com.nowcoder.example.service.UserService;
+   import org.springframework.beans.factory.annotation.Autowired;
+   import org.springframework.stereotype.Controller;
+   import org.springframework.web.bind.annotation.PathVariable;
+   import org.springframework.web.bind.annotation.RequestMapping;
+   import org.springframework.web.bind.annotation.RequestMethod;
+   import org.springframework.web.bind.annotation.ResponseBody;
+   
+   @Controller
+   @RequestMapping(path = "/user")
+   public class UserController {
+   
+       @Autowired
+       private UserService userService;
+   
+       // /user/detail/1
+       @RequestMapping(path = "/detail/{id}", method = RequestMethod.GET)
+       @ResponseBody
+       public User getUser(@PathVariable("id") int id) {
+           // {id:1,username:'',password:''}
+           return userService.getUser(id);
+       }
+   
+   }
+   ```
+## 4.2 总结
