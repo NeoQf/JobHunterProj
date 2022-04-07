@@ -1,6 +1,7 @@
 # 1 功能
 &nbsp;&nbsp;如图是spring、spring MVC、spring boot的简单功能概要。<br/>
-&nbsp;&nbsp;<img src="img.png" width = "600" height = "450" alt="" />
+&nbsp;&nbsp;<img src="img.png" width = "600" height = "450" alt="" /><br/>
+&nbsp;&nbsp;<img src="img_1.png" width = "800" height = "450" alt="" />
 
 # 2 springBoot 
 ## 2.1 构建项目
@@ -56,3 +57,7 @@
         // getter、setter以及toString方法略...
     }
     ```
+## 3.3 哪些层有接口
+1. controller没有接口，service和dao有接口；
+2. 原因：controller是由浏览器页面去调用的，若是要换一个controller类的话，那就重写一个controller类即可；
+而dao、service要换的话，只需要重写接口的实现类（不使用浏览器页面进行调用）即可。
