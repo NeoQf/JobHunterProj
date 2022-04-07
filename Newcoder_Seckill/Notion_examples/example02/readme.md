@@ -8,14 +8,15 @@
 
 
 # 3 Spring
-## 3.1 IOC实现可插拔（对spring的理解）
+## 3.1 IOC
+### 3.1.1 IOC实现可插拔（对spring的理解）
 1. 例如：接口UserDao；
 2. 其实现类UserDaoHibernateImpl与UserDaoJdbcImpl；
 3. 只使用其中一个，那么只能对其中一个加@Repository注解；
 4. 或者两个都加，但是这样的话要选择优先级，那么可以对其中要使用的那个加上@Primary注解。
 5. 总结：从这里我学到了spring调用接口方法，其实调用了其实现类的方法，只不过是用了@Repository进行Bean的自动管理。
 
-## 3.2 IOC管理哪些Bean
+### 3.1.2 IOC管理哪些Bean
 问题：为什么entity下的User类就不使用IOC（@Repository等Bean的注解）进行Bean的管理？
 1. IOC一般用于管理**可复用的、不变的**类；不可复用的、易变的类不适用IOC进行管理。<br/>
    如dao和service，它们都是单例的，只需要实例化一次即可反复使用，因为那些类中没有数据，没有直接的成员变量，只是一个逻辑，这种逻辑是可以复用的，像这种可以复用的、一般可以单例的，我们都可以使用IOC进行管理。
@@ -57,13 +58,16 @@
         // getter、setter以及toString方法略...
     }
     ```
-## 3.3 哪些层有接口
+### 3.1.3 哪些层有接口
 1. controller没有接口，service和dao有接口；
 2. 原因：controller是由浏览器页面去调用的，若是要换一个controller类的话，那就重写一个controller类即可；<br/>
 而dao、service要换的话，只需要重写接口的实现类（不使用浏览器页面进行调用）即可。
 
-## 3.4 总结
+### 3.1.4 总结
 &nbsp;&nbsp;&nbsp;&nbsp;IOC解决的是Bean的管理和bean之间的依赖的问题。
+
+### 3.1.5 IOC控制Bean的生命周期以及作用域
+
 
 # 4 SpringMVC
 ## 4.1 问题
