@@ -2,9 +2,11 @@ package com.nowcoder.example.dao.impl;
 
 import com.nowcoder.example.dao.UserDao;
 import com.nowcoder.example.entity.User;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@Primary
 public class UserDaoHibernateImpl implements UserDao {
     @Override
     public User findById(int id) {

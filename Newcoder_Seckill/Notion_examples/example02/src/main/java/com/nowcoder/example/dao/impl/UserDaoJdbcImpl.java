@@ -4,7 +4,7 @@ import com.nowcoder.example.dao.UserDao;
 import com.nowcoder.example.entity.User;
 import org.springframework.stereotype.Repository;
 
-//@Repository
+@Repository
 public class UserDaoJdbcImpl implements UserDao {
     @Override
     public User findById(int id) {
