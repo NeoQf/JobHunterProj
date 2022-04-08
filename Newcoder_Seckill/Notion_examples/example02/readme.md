@@ -67,19 +67,70 @@
 &nbsp;&nbsp;&nbsp;&nbsp;IOC解决的是Bean的管理和bean之间的依赖的问题。
 
 ### 3.1.5 IOC控制Bean的生命周期以及作用域
+1. IOC管理Bean的生命周期 -- 在UserServiceImpl.java中
+   <br/>1）@PostConstruct
+   <br/>2）@PreDestroy
+   
+2. IOC管理Bean的作用域
+   <br/>1）bean作用域的含义：在Spring里面，设置创建bean实例是单实例还是多实例
+   <br/>2）做法：在需要使用多例的类上面加上 **@Scope("prototype")** 注解即可。
 
+## 3.2 ApplicationContext
+1. 核心功能：获取bean。
+2. 获取bean的方法：
+<br/>&nbsp;&nbsp;1）`private ApplicationContext applicationContext; ` -- 获取ApplicationContext类的实例对象
+<br/>&nbsp;&nbsp;2）`applicationContext.getBean(UserDao.class); ` -- 使用ApplicationContext的getBean()方法得到bean
+<br/>&nbsp;&nbsp;3）`applicationContext.getBean(xxx); ` -- getBean()方法可以使用不同的传入参数
+3. 代码：
+   ```java
+   package com.nowcoder.example;
+   
+   @SpringBootTest
+   class ExampleApplicationTests implements ApplicationContextAware {
+   
+       // ApplicationContext extends BeanFactory
+       // BeanFactory -> Spring Framework Developer
+       // ApplicationContext -> plain Developer
+       private ApplicationContext applicationContext;
+   
+       @Autowired
+       private UserService userService;
+       @Override
+       public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+           this.applicationContext = applicationContext;
+       }
+   
+       @Test
+       public void testApplicationContext() {
+           UserDao dao1 = applicationContext.getBean(UserDao.class);
+           System.out.println(dao1.findById(161));
+   
+           UserDao dao2 = (UserDao) applicationContext.getBean("userDaoHibernateImpl");
+           System.out.println(dao2.findById(162));
+   
+           UserDao dao3 = applicationContext.getBean("userDaoHibernateImpl", UserDao.class);
+           System.out.println(dao3.findById(163));
+       }
+   
+   }
+   ```
+
+## 3.3 AOP
+1. 概念：
+## 3.4 BeanFactory
+&nbsp;&nbsp;一般是开发Spring框架的人员使用，普通的使用Spring框架的开发者不会使用。
 
 # 4 SpringMVC
 ## 4.1 问题
 1. spring的IOC如何与SpringMVC衔接起来？（如上图2的工作流程）<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;-- 而由于SpringMVC是处理view（视图）的问题，并且controller又是最终被浏览器调用并显示；所以，实际上就是要问如何将数据显示到浏览器页面上？亦即，service如何被controller调用的问题。
 2. service是如何被controller调用的？-- 在UserController.java中：
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;1）@Controller -- Bean管理创建当前类（在UserController）的对象
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;2）@RequestMapping(path = "/user") -- 当前类的浏览器url路径
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;3）@Autowired -- 导入service，虽然是放在UserService上面，但是是导入其实现类的对象。（Bean管理创建UserService实现类的对象
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;4）@RequestMapping(path = "/detail/{id}", method = RequestMethod.GET) -- 当前方法的浏览器url路径，{id}表示是一个参数
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;5）@ResponseBody -- 表示结果在浏览器中以json格式显示
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;6）@PathVariable("id") -- 使用在方法的参数前，表示获取前面{id}实际填入浏览器中的值
+<br/>&nbsp;&nbsp;1）@Controller -- Bean管理创建当前类（在UserController）的对象
+<br/>&nbsp;&nbsp;2）@RequestMapping(path = "/user") -- 当前类的浏览器url路径
+<br/>&nbsp;&nbsp;3）@Autowired -- 导入service，虽然是放在UserService上面，但是是导入其实现类的对象。（Bean管理创建UserService实现类的对象
+<br/>&nbsp;&nbsp;4）@RequestMapping(path = "/detail/{id}", method = RequestMethod.GET) -- 当前方法的浏览器url路径，{id}表示是一个参数
+<br/>&nbsp;&nbsp;5）@ResponseBody -- 表示结果在浏览器中以json格式显示
+<br/>&nbsp;&nbsp;6）@PathVariable("id") -- 使用在方法的参数前，表示获取前面{id}实际填入浏览器中的值
 3. 代码<br/>
    ```java
    package com.nowcoder.example.controller;

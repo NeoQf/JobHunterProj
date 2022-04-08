@@ -14,8 +14,8 @@ import org.springframework.context.ApplicationContextAware;
 class ExampleApplicationTests implements ApplicationContextAware {
 
 	// ApplicationContext extends BeanFactory
-	// BeanFactory -> Spring Framework
-	// ApplicationContext -> Developer
+	// BeanFactory -> Spring Framework Developer
+	// ApplicationContext -> plain Developer
 	private ApplicationContext applicationContext;
 
 	@Autowired
