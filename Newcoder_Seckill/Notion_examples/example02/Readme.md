@@ -116,7 +116,8 @@
    ```
 
 ## 3.3 AOP
-1. 概念：面向切面编程。它能够解决一些公共的需求，比如有很多组件都需要做同样的事情，并且是以低耦合、可插拔的方式解决。
+1. 概念：面向切面编程。它能够解决一些公共的需求，比如有很多组件都需要做同样的事情，并且是以低耦合、可插拔的方式解决。如图所示：
+&nbsp;&nbsp;<img src="img_2.png" width = "800" height = "500" alt="" /><br/>
 2. 问题分析：
 <br/>&nbsp;&nbsp;1）需求：例如有ABCDE这5个bean都需要记日志，那么就可以使用AOP统一去做，而且这5个bean不需要更改任何代码；
 <br/>&nbsp;&nbsp;2）分析：那么AOP是如何做到的呢？
@@ -178,7 +179,9 @@
    
    }
    ```
-4. 4
+4. 各个注解：
+<br/>&nbsp;&nbsp;1）@Aspect、@Pointcut；
+<br/>&nbsp;&nbsp;2）@Before、@AfterThrowing、@AfterReturning、@After、@Around.
 ## 3.4 BeanFactory
 &nbsp;&nbsp;一般是开发Spring框架的人员使用，普通的使用Spring框架的开发者不会使用。
 
