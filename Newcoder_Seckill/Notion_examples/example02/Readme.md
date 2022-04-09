@@ -116,7 +116,69 @@
    ```
 
 ## 3.3 AOP
-1. 概念：
+1. 概念：面向切面编程。它能够解决一些公共的需求，比如有很多组件都需要做同样的事情，并且是以低耦合、可插拔的方式解决。
+2. 问题分析：
+<br/>&nbsp;&nbsp;1）需求：例如有ABCDE这5个bean都需要记日志，那么就可以使用AOP统一去做，而且这5个bean不需要更改任何代码；
+<br/>&nbsp;&nbsp;2）分析：那么AOP是如何做到的呢？
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a）表面上，是使用@Aspect、@Pointcut(bean路径)、@Before等注解，写出“记日志”的动作，那么指定路径的“bean”就会执行记日志的动作。
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b）而底层情况，实际上是将“记日志”方法的代码，“织入”到相应的bean里面去，于是在类对象下执行了相应的“记日志”方法的代码。
+3. 代码 -- 注意看LogAspect.java，其中的@PointCut的参数。
+   ```java
+   package com.nowcoder.example.aspect;
+   
+   import org.aspectj.lang.ProceedingJoinPoint;
+   import org.aspectj.lang.annotation.*;
+   import org.springframework.stereotype.Component;
+   
+   @Component
+   @Aspect
+   public class LogAspect {
+   
+       @Pointcut("execution(* com.nowcoder.example.service.*.*(..))")
+       private void serviceAccess() {
+   
+       }
+   
+   //    @Before("serviceAccess()")
+       public void before() {
+           System.out.println("log before");
+       }
+   
+   //    @AfterThrowing("serviceAccess()")
+       public void afterThrowing() {
+           System.out.println("log afterThrowing");
+       }
+   
+   //    @AfterReturning("serviceAccess()")
+       public void afterReturning() {
+           System.out.println("log afterReturning");
+       }
+   
+   //    @After("serviceAccess()")
+       public void after() {
+           System.out.println("log after");
+       }
+   
+       @Around("serviceAccess()")
+       public Object log(ProceedingJoinPoint joinPoint) {
+           Object obj = null;
+           try {
+               System.out.println("log before");
+               // 调用目标组件的方法
+               obj = joinPoint.proceed();
+               System.out.println("log afterReturning");
+           } catch (Throwable throwable) {
+               System.out.println("log afterThrowing");
+           } finally {
+               System.out.println("log after");
+           }
+   
+           return obj;
+       }
+   
+   }
+   ```
+4. 4
 ## 3.4 BeanFactory
 &nbsp;&nbsp;一般是开发Spring框架的人员使用，普通的使用Spring框架的开发者不会使用。
 
