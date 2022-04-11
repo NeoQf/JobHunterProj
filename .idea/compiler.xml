@@ -8,10 +8,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="seckillV1" />
         <module name="example02" />
+        <module name="example03" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="example02" target="1.8" />
+      <module name="example03" target="1.8" />
       <module name="seckill" target="1.8" />
       <module name="seckillV1" target="1.8" />
     </bytecodeTargetLevel>
@@ -19,6 +21,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="example02" options="-parameters" />
+      <module name="example03" options="-parameters" />
       <module name="seckill" options="-parameters" />
       <module name="seckillV1" options="-parameters" />
     </option>
