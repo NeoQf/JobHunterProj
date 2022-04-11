@@ -4,7 +4,7 @@
 &nbsp;&nbsp;<img src="img_1.png" width = "800" height = "450" alt="" />
 
 # 2 springBoot 
-## 2.1 构建项目
+## 2.1 构建项目 
 
 
 # 3 Spring
@@ -117,7 +117,7 @@
 
 ## 3.3 AOP
 1. 概念：面向切面编程。它能够解决一些公共的需求，比如有很多组件都需要做同样的事情，并且是以低耦合、可插拔的方式解决。如图：
-&nbsp;&nbsp;<img src="img_2.png" width = "800" height = "500" alt="" />
+&nbsp;&nbsp;<img src="img_2.png" width = "700" height = "400" alt="" />
 2. 问题分析：
 <br/>&nbsp;&nbsp;1）需求：例如有ABCDE这5个bean都需要记日志，那么就可以使用AOP统一去做，而且这5个bean不需要更改任何代码；
 <br/>&nbsp;&nbsp;2）分析：那么AOP是如何做到的呢？
@@ -226,6 +226,29 @@
    
    }
    ```
-## 4.2 总结
+## 4.2 SpringMVC工作流程
+1. 大致流程逻辑图
+<br/>&nbsp;&nbsp;1）DispatcherServlet，核心；
+<br/>&nbsp;&nbsp;2）HandlerMapping，；
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;-- HandlerMapping，；
+<br/>&nbsp;&nbsp;3）HandlerAdapter，；
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;-- ModelAndView，；
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;-- Interceptor1，；
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;-- Interceptor2，；
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;-- response(@ResponseBody)，；
+<br/>&nbsp;&nbsp;4）ViewResolver，；
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;-- Interceptor3，；
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;-- view，；
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;-- response，；
+<br/>&nbsp;&nbsp;5），；
+<br/>&nbsp;&nbsp;<img src="img_3.png" width = "700" height = "450" alt="" />
+2. 源码流程
+<br/>&nbsp;&nbsp;如何去了解源码呢？-- 先找到DispatcherServlet.java源码，再结合上流程述逻辑图，找到DispatcherServlet类的doDispatch()方法，找到其中关键的几个组件和流程，对应到相应的代码，进行阅读即可。
+<br/>&nbsp;&nbsp;1）DispatcherServlet -- 作为类；位于图中最中间。
+<br/>&nbsp;&nbsp;2）doDispatch()方法 -- 核心方法，涉及到的组件都会在这个方法出现。
+<br/>&nbsp;&nbsp;2）doDispatch()方法 -- 核心方法，涉及到的组件都会在这个方法出现。
+3. 面试总结
+
+## 4.3 总结
 1. IOC解决的是bean之间的依赖关系；
 2. SpringMVC解决的是controller调用service，并将结果显示在页面上的问题。
