@@ -76,12 +76,23 @@
 ### 2.2.2 SqlSession
 1. 概念相当于数据库连接池里的**DataSource**；
 
-### 2.2.3 SqlSession
+### 2.2.3 MapperProxy
 
 
-### 2.2.4 SqlSession
+### 2.2.4 Mapper
 
 
-### 2.2.5 SqlSession
+### 2.2.5 Configuration
+
+
+### 2.2.6 Mapper.xml
+
+
+### 2.2.7 MybatisAutoConfiguration
+
+
+### 2.2.8 MapperScannerConfiguration
+
+
 
 
