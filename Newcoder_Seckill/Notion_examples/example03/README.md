@@ -39,3 +39,49 @@
 
 # 2 Mybatis底层原理
 ## 2.1 逻辑流程图
+1. 流程图<br/>
+&nbsp;&nbsp;<img src="img.png" width = "1200" height = "800" alt="" /><br/>
+2. 2
+## 2.2 各组件作用
+### 2.2.1 SqlSessionFactory 
+1. 概念：相当于数据库连接池里的DruidDataSourceFactory。数据库中是使用**DruidDataSourceFactory**创建**创建数据库连接池对象**获得**DataSource**的，再使用ds.getConnection()方法获取连接对象。
+<br/>&nbsp;-- 如Druid数据库连接池代码所示：
+   ```java
+   package io.github.neoqf.datasource.druid;
+   
+   import com.alibaba.druid.pool.DruidDataSourceFactory;
+   
+   import javax.sql.DataSource;
+   import java.io.InputStream;
+   import java.sql.Connection;
+   import java.util.Properties;
+   
+   public class DruidDemo{
+   public static void main(String[]args)throws Exception{
+   //1.导入jar包
+           //2.定义配置文件
+           //3.加载配置文件
+           Properties pro = new Properties();
+           InputStream is = DruidDemo.class.getClassLoader().getResourceAsStream("druid.properties");
+           pro.load(is);
+           //4.获取连接池对象
+           DataSource ds = DruidDataSourceFactory.createDataSource(pro);
+           //5.获取连接
+           Connection conn = ds.getConnection();
+           System.out.println(conn);
+       }
+   }
+   ```
+
+### 2.2.2 SqlSession
+1. 概念相当于数据库连接池里的**DataSource**；
+
+### 2.2.3 SqlSession
+
+
+### 2.2.4 SqlSession
+
+
+### 2.2.5 SqlSession
+
+

@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.nowcoder</groupId>
-    <artifactId>seckill</artifactId>
+    <artifactId>seckillV1</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>seckill</name>
+    <name>seckillV1</name>
     <description>Seckill for Spring Boot</description>
 
     <properties>
