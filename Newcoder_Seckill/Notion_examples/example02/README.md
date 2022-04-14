@@ -1,7 +1,7 @@
 # 1 功能
-&nbsp;&nbsp;如图是spring、spring MVC、spring boot的简单功能概要。<br/>
-&nbsp;&nbsp;<img src="img.png" width = "600" height = "450" alt="" /><br/>
-&nbsp;&nbsp;<img src="img_1.png" width = "800" height = "450" alt="" />
+  &nbsp;&nbsp;如图是spring、spring MVC、spring boot的简单功能概要。<br/>
+  &nbsp;&nbsp;<img src="img.png" width = "600" height = "450" alt="" /><br/>
+  &nbsp;&nbsp;<img src="img_1.png" width = "800" height = "450" alt="" />
 
 # 2 springBoot 
 ## 2.1 构建项目 
@@ -64,8 +64,7 @@
 而dao、service要换的话，只需要重写接口的实现类（不使用浏览器页面进行调用）即可。
 
 ### 3.1.4 总结
-&nbsp;&nbsp;&nbsp;&nbsp;IOC解决的是Bean的管理和bean之间的依赖的问题。
-
+  &nbsp;&nbsp;&nbsp;&nbsp;IOC解决的是Bean的管理和bean之间的依赖的问题。
 ### 3.1.5 IOC控制Bean的生命周期以及作用域
 1. IOC管理Bean的生命周期 -- 在UserServiceImpl.java中
    <br/>1）@PostConstruct
@@ -78,9 +77,9 @@
 ## 3.2 ApplicationContext
 1. 核心功能：获取bean。
 2. 获取bean的方法：
-<br/>&nbsp;&nbsp;1）`private ApplicationContext applicationContext; ` -- 获取ApplicationContext类的实例对象
-<br/>&nbsp;&nbsp;2）`applicationContext.getBean(UserDao.class); ` -- 使用ApplicationContext的getBean()方法得到bean
-<br/>&nbsp;&nbsp;3）`applicationContext.getBean(xxx); ` -- getBean()方法可以使用不同的传入参数
+  <br/>&nbsp;&nbsp;1）`private ApplicationContext applicationContext; ` -- 获取ApplicationContext类的实例对象
+  <br/>&nbsp;&nbsp;2）`applicationContext.getBean(UserDao.class); ` -- 使用ApplicationContext的getBean()方法得到bean
+  <br/>&nbsp;&nbsp;3）`applicationContext.getBean(xxx); ` -- getBean()方法可以使用不同的传入参数
 3. 代码：
    ```java
    package com.nowcoder.example;
@@ -117,12 +116,12 @@
 
 ## 3.3 AOP
 1. 概念：面向切面编程。它能够解决一些公共的需求，比如有很多组件都需要做同样的事情，并且是以低耦合、可插拔的方式解决。如图：
-&nbsp;&nbsp;<img src="img_2.png" width = "700" height = "400" alt="" />
+  &nbsp;&nbsp;<img src="img_2.png" width = "700" height = "400" alt="" />
 2. 问题分析：
-<br/>&nbsp;&nbsp;1）需求：例如有ABCDE这5个bean都需要记日志，那么就可以使用AOP统一去做，而且这5个bean不需要更改任何代码；
-<br/>&nbsp;&nbsp;2）分析：那么AOP是如何做到的呢？
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a）表面上，是使用@Aspect、@Pointcut(bean路径)、@Before等注解，写出“记日志”的动作，那么指定路径的“bean”就会执行记日志的动作。
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b）而底层情况，实际上是将“记日志”方法的代码，“织入”到相应的bean里面去，于是在类对象下执行了相应的“记日志”方法的代码。
+  <br/>&nbsp;&nbsp;1）需求：例如有ABCDE这5个bean都需要记日志，那么就可以使用AOP统一去做，而且这5个bean不需要更改任何代码；
+  <br/>&nbsp;&nbsp;2）分析：那么AOP是如何做到的呢？
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a）表面上，是使用@Aspect、@Pointcut(bean路径)、@Before等注解，写出“记日志”的动作，那么指定路径的“bean”就会执行记日志的动作。
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b）而底层情况，实际上是将“记日志”方法的代码，“织入”到相应的bean里面去，于是在类对象下执行了相应的“记日志”方法的代码。
 3. 代码 -- 注意看LogAspect.java，其中的@PointCut的参数。
    ```java
    package com.nowcoder.example.aspect;
@@ -180,22 +179,22 @@
    }
    ```
 4. 各个注解：
-<br/>&nbsp;&nbsp;1）@Aspect、@Pointcut；
-<br/>&nbsp;&nbsp;2）@Before、@AfterThrowing、@AfterReturning、@After、@Around.
+  <br/>&nbsp;&nbsp;1）@Aspect、@Pointcut；
+  <br/>&nbsp;&nbsp;2）@Before、@AfterThrowing、@AfterReturning、@After、@Around.
 ## 3.4 BeanFactory
-&nbsp;&nbsp;一般是开发Spring框架的人员使用，普通的使用Spring框架的开发者不会使用。
+  &nbsp;&nbsp;一般是开发Spring框架的人员使用，普通的使用Spring框架的开发者不会使用。
 
 # 4 SpringMVC
 ## 4.1 问题
 1. spring的IOC如何与SpringMVC衔接起来？（如上图2的工作流程）<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;-- 而由于SpringMVC是处理view（视图）的问题，并且controller又是最终被浏览器调用并显示；所以，实际上就是要问如何将数据显示到浏览器页面上？亦即，service如何被controller调用的问题。
+  &nbsp;&nbsp;&nbsp;&nbsp;-- 而由于SpringMVC是处理view（视图）的问题，并且controller又是最终被浏览器调用并显示；所以，实际上就是要问如何将数据显示到浏览器页面上？亦即，service如何被controller调用的问题。
 2. service是如何被controller调用的？-- 在UserController.java中：
-<br/>&nbsp;&nbsp;1）@Controller -- Bean管理创建当前类（在UserController）的对象
-<br/>&nbsp;&nbsp;2）@RequestMapping(path = "/user") -- 当前类的浏览器url路径
-<br/>&nbsp;&nbsp;3）@Autowired -- 导入service，虽然是放在UserService上面，但是是导入其实现类的对象。（Bean管理创建UserService实现类的对象
-<br/>&nbsp;&nbsp;4）@RequestMapping(path = "/detail/{id}", method = RequestMethod.GET) -- 当前方法的浏览器url路径，{id}表示是一个参数
-<br/>&nbsp;&nbsp;5）@ResponseBody -- 表示结果在浏览器中以json格式显示
-<br/>&nbsp;&nbsp;6）@PathVariable("id") -- 使用在方法的参数前，表示获取前面{id}实际填入浏览器中的值
+  <br/>&nbsp;&nbsp;1）@Controller -- Bean管理创建当前类（在UserController）的对象
+  <br/>&nbsp;&nbsp;2）@RequestMapping(path = "/user") -- 当前类的浏览器url路径
+  <br/>&nbsp;&nbsp;3）@Autowired -- 导入service，虽然是放在UserService上面，但是是导入其实现类的对象。（Bean管理创建UserService实现类的对象
+  <br/>&nbsp;&nbsp;4）@RequestMapping(path = "/detail/{id}", method = RequestMethod.GET) -- 当前方法的浏览器url路径，{id}表示是一个参数
+  <br/>&nbsp;&nbsp;5）@ResponseBody -- 表示结果在浏览器中以json格式显示
+  <br/>&nbsp;&nbsp;6）@PathVariable("id") -- 使用在方法的参数前，表示获取前面{id}实际填入浏览器中的值
 3. 代码<br/>
    ```java
    package com.nowcoder.example.controller;
@@ -228,25 +227,25 @@
    ```
 ## 4.2 SpringMVC工作流程
 1. 大致流程逻辑图
-<br/>&nbsp;&nbsp;1）DispatcherServlet，核心；
-<br/>&nbsp;&nbsp;2）HandlerMapping，；
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;-- HandlerMapping，；
-<br/>&nbsp;&nbsp;3）HandlerAdapter，；
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;-- ModelAndView，；
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;-- Interceptor1，；
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;-- Interceptor2，；
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;-- response(@ResponseBody)，；
-<br/>&nbsp;&nbsp;4）ViewResolver，；
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;-- Interceptor3，；
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;-- view，；
-<br/>&nbsp;&nbsp;&nbsp;&nbsp;-- response，；
-<br/>&nbsp;&nbsp;5），；
-<br/>&nbsp;&nbsp;<img src="img_3.png" width = "700" height = "450" alt="" />
+  <br/>&nbsp;&nbsp;1）DispatcherServlet，核心；
+  <br/>&nbsp;&nbsp;2）HandlerMapping，；
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;-- HandlerMapping，；
+  <br/>&nbsp;&nbsp;3）HandlerAdapter，；
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;-- ModelAndView，；
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;-- Interceptor1，；
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;-- Interceptor2，；
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;-- response(@ResponseBody)，；
+  <br/>&nbsp;&nbsp;4）ViewResolver，；
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;-- Interceptor3，；
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;-- view，；
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;-- response，；
+  <br/>&nbsp;&nbsp;5），；
+  <br/>&nbsp;&nbsp;<img src="img_3.png" width = "700" height = "450" alt="" />
 2. 源码流程
-<br/>&nbsp;&nbsp;如何去了解源码呢？-- 先找到DispatcherServlet.java源码，再结合上流程述逻辑图，找到DispatcherServlet类的doDispatch()方法，找到其中关键的几个组件和流程，对应到相应的代码，进行阅读即可。
-<br/>&nbsp;&nbsp;1）DispatcherServlet -- 作为类；位于图中最中间。
-<br/>&nbsp;&nbsp;2）doDispatch()方法 -- 核心方法，涉及到的组件都会在这个方法出现。
-<br/>&nbsp;&nbsp;2）doDispatch()方法 -- 核心方法，涉及到的组件都会在这个方法出现。
+  <br/>&nbsp;&nbsp;如何去了解源码呢？-- 先找到DispatcherServlet.java源码，再结合上流程述逻辑图，找到DispatcherServlet类的doDispatch()方法，找到其中关键的几个组件和流程，对应到相应的代码，进行阅读即可。
+  <br/>&nbsp;&nbsp;1）DispatcherServlet -- 作为类；位于图中最中间。
+  <br/>&nbsp;&nbsp;2）doDispatch()方法 -- 核心方法，涉及到的组件都会在这个方法出现。
+  <br/>&nbsp;&nbsp;2）doDispatch()方法 -- 核心方法，涉及到的组件都会在这个方法出现。
 3. 面试总结
 
 ## 4.3 总结
