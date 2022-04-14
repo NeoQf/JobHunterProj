@@ -89,10 +89,10 @@
 ### 1.3.6 Mapper.xml
 
 
-#### 1.3.7 MybatisAutoConfiguration
+### 1.3.7 MybatisAutoConfiguration
 
 
-#### 1.3.8 MapperScannerConfiguration
+### 1.3.8 MapperScannerConfiguration
 
 
 # 2 状态管理
