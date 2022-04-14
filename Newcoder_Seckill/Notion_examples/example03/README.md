@@ -1,5 +1,6 @@
-# 1 Mybatis项目管理
-## 1.1 创建与生成
+# 1 Mybatis
+## 1.1 Mybatis项目管理
+-- 创建与生成
 参考博客：https://blog.csdn.net/qq_45401910/article/details/123345742
 1. 使用Mybatis需要手动创建的文件：
 <br/>&nbsp;&nbsp;1）pom.xml，指定插件：
@@ -37,13 +38,13 @@
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;b、ItemMapper.java--接口类，数据库操作方法，但无具体实现；于/src/main/java/dao/目录下。（没有具体实现，且又没有接口实现类的话，那么代码如何实现具体的sql语句？如3）所示，有了3）就有了具体的sql语句；结合动态代理，即可实现与接口实现类同样的功能）。
 <br/>&nbsp;&nbsp;&nbsp;&nbsp;c、ItemMapper.xml--接口类的映射文件，根据2）的数据库的操作方法，写有具体的sql语句；于/src/main/java/resources/mappers/目录下。
 
-# 2 Mybatis底层原理
-## 2.1 逻辑流程图
+
+## 1.2 Mybatis逻辑流程图
 1. 流程图<br/>
 &nbsp;&nbsp;<img src="img.png" width = "1200" height = "800" alt="" /><br/>
 2. 2
-## 2.2 各组件作用
-### 2.2.1 SqlSessionFactory 
+## 1.3 Mybatis各组件作用
+### 1.3.1 SqlSessionFactory 
 1. 概念：相当于数据库连接池里的DruidDataSourceFactory。数据库中是使用**DruidDataSourceFactory**创建**创建数据库连接池对象**获得**DataSource**的，再使用ds.getConnection()方法获取连接对象。
 <br/>&nbsp;-- 如Druid数据库连接池代码所示：
    ```java
@@ -73,26 +74,27 @@
    }
    ```
 
-### 2.2.2 SqlSession
+### 1.3.2 SqlSession
 1. 概念相当于数据库连接池里的**DataSource**；
 
-### 2.2.3 MapperProxy
+### 1.3.3 MapperProxy
 
 
-### 2.2.4 Mapper
+### 1.3.4 Mapper
 
 
-### 2.2.5 Configuration
+### 1.3.5 Configuration
 
 
-### 2.2.6 Mapper.xml
+### 1.3.6 Mapper.xml
 
 
-### 2.2.7 MybatisAutoConfiguration
+#### 1.3.7 MybatisAutoConfiguration
 
 
-### 2.2.8 MapperScannerConfiguration
+#### 1.3.8 MapperScannerConfiguration
 
 
-
+# 2 状态管理
+## 2.1 
 
