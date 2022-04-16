@@ -153,11 +153,11 @@
 
 ## 5.1 根域名相同
   1. 做法，cookie设置范围为根目录：
-    <br/>&nbsp;&nbsp;<img src="img_9.png" width = "750" height = "450" alt="" /><br/>
+    <br/>&nbsp;&nbsp;<img src="img_9.png" width = "900" height = "500" alt="" /><br/>
 
 ## 5.2 根域名不同
   1. 做法，cookie设置范围不为根目录：
-    <br/>&nbsp;&nbsp;<img src="img_10.png" width = "750" height = "450" alt="" /><br/>
+    <br/>&nbsp;&nbsp;<img src="img_10.png" width = "900" height = "500" alt="" /><br/>
   2. 说明：使用一个中间服务器，颁发全局token进行校验。
 
 
