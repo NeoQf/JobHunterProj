@@ -6,24 +6,29 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="seckillV1" />
         <module name="example02" />
         <module name="example03" />
+        <module name="seckillV1" />
+        <module name="seckillV2" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="8">
       <module name="example02" target="1.8" />
       <module name="example03" target="1.8" />
-      <module name="seckill" target="1.8" />
+      <module name="JobHunterProj" target="8" />
+      <module name="Newcoder_Seckill" target="8" />
+      <module name="Notion_examples" target="8" />
+      <module name="seckillProj" target="8" />
       <module name="seckillV1" target="1.8" />
+      <module name="seckillV2" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="example02" options="-parameters" />
       <module name="example03" options="-parameters" />
-      <module name="seckill" options="-parameters" />
       <module name="seckillV1" options="-parameters" />
+      <module name="seckillV2" options="-parameters" />
     </option>
   </component>
 </project>

@@ -96,7 +96,7 @@ public class OrderServiceImpl implements OrderService, ErrorCode {
             } else if (!item.getPromotion().getId().equals(promotionId)) {
                 throw new BusinessException(PARAMETER_ERROR, "指定的活动不存在！");
             } else if (item.getPromotion().getStatus() == 1) {
-                throw new BusinessException(PARAMETER_ERROR, "指定的活动未开始！");
+                throw new BusinessException(PARAMETER_ERROR, "指定的活动已结束！");
             }
         }
 
